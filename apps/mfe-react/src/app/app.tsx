@@ -2,11 +2,13 @@
 import styles from './app.module.scss';
 
 import NxWelcome from './nx-welcome';
+import SearchPokemon from '../components/search-pokemon/search-pokemon';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="mfe-react" />
+      <SearchPokemon></SearchPokemon>
+      <NxWelcome title={'MFE React'}></NxWelcome>
     </div>
   );
 }
