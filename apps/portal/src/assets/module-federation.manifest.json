@@ -2,5 +2,5 @@
   "mfe1": "http://localhost:4201",
   "mfe2": "http://localhost:4202",
   "mfe3": "http://localhost:4203",
-  "mfe-react": "http://localhost:4204"
+  "mfe-react": "http://localhost:4204/remoteEntry.js"
 }
