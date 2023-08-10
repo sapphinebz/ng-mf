@@ -1,8 +1,9 @@
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, ViewContainerRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { WebComponentWrapperOptions } from '../models/web-component-wrapper-options';
 import { loadRemoteModule } from '@nx/angular/mf';
+import { MaintainComponent } from '../maintain/maintain.component';
 
 @Component({
   selector: 'ng-mf-wrapper',
@@ -13,6 +14,7 @@ import { loadRemoteModule } from '@nx/angular/mf';
 })
 export class WrapperComponent {
   el: ElementRef<HTMLElement> = inject(ElementRef);
+  vc = inject(ViewContainerRef);
   route = inject(ActivatedRoute);
   async ngAfterContentInit() {
     const options = this.route.snapshot.data as WebComponentWrapperOptions;
@@ -22,7 +24,9 @@ export class WrapperComponent {
       const element = document.createElement(options.elementName);
       this.el.nativeElement.appendChild(element);
     } catch (error) {
-      console.error(error);
+      this.vc.createComponent(MaintainComponent);
+
+      // console.error(error);
     }
   }
 }
