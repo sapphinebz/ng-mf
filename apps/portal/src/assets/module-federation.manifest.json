@@ -2,5 +2,6 @@
   "mfe1": "http://localhost:4201",
   "mfe2": "http://localhost:4202",
   "mfe3": "http://localhost:4203",
-  "mfe-react": "http://localhost:4204/remoteEntry.js"
+  "mfe-react": "http://localhost:4204/remoteEntry.js",
+  "angular14-remote": "http://localhost:4205/remoteEntry.js"
 }

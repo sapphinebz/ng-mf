@@ -20,6 +20,13 @@ export const appRoutes: Route[] = [
       loadRemoteModule('mfe1', './Routes').then((m) => m.remoteRoutes),
   },
   {
+    path: 'angular14-remote',
+    loadChildren: () =>
+      loadRemoteModule('angular14-remote', './Routes').then(
+        (m) => m.remoteRoutes
+      ),
+  },
+  {
     path: 'mfe-react',
     component: WrapperComponent,
     data: {
