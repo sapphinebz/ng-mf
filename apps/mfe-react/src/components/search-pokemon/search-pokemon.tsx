@@ -24,13 +24,7 @@ export function SearchPokemon(props: SearchPokemonProps) {
 
     return subscription.unsubscribe.bind(subscription);
   }, []);
-  return (
-    <div className={styles['container']}>
-      <div>sdfsdf</div>
-      <div>sdfsdf</div>
-      <div>sdfsdf</div>
-    </div>
-  );
+  return <div className={styles['container']}></div>;
 }
 
 export default SearchPokemon;
