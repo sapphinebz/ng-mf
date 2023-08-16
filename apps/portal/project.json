@@ -16,7 +16,11 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/portal/tsconfig.app.json",
         "assets": ["apps/portal/src/favicon.ico", "apps/portal/src/assets"],
-        "styles": ["apps/portal/src/styles.scss"],
+        "styles": [
+          "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "apps/portal/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/portal/webpack.config.js"

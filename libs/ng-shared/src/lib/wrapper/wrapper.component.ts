@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewContainerRef, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  ViewContainerRef,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { WebComponentWrapperOptions } from '../models/web-component-wrapper-options';
@@ -15,18 +21,21 @@ import { MaintainComponent } from '../maintain/maintain.component';
 export class WrapperComponent {
   el: ElementRef<HTMLElement> = inject(ElementRef);
   vc = inject(ViewContainerRef);
-  route = inject(ActivatedRoute);
+  @Input() exposedModule?: string;
+  @Input() elementName?: string;
+  @Input() remoteName?: string;
+
   async ngAfterContentInit() {
-    const options = this.route.snapshot.data as WebComponentWrapperOptions;
+    if (this.exposedModule && this.elementName && this.remoteName) {
+      try {
+        await loadRemoteModule(this.remoteName, this.exposedModule);
+        const element = document.createElement(this.elementName);
+        this.el.nativeElement.appendChild(element);
+      } catch (error) {
+        this.vc.createComponent(MaintainComponent);
 
-    try {
-      await loadRemoteModule(options.remoteName, options.exposedModule);
-      const element = document.createElement(options.elementName);
-      this.el.nativeElement.appendChild(element);
-    } catch (error) {
-      this.vc.createComponent(MaintainComponent);
-
-      // console.error(error);
+        // console.error(error);
+      }
     }
   }
 }

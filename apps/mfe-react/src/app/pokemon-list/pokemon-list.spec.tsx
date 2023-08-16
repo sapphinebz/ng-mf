@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SearchPokemon from './search-pokemon';
+import PokemonList from './pokemon-list';
 
-describe('SearchPokemon', () => {
+describe('PokemonList', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SearchPokemon />);
+    const { baseElement } = render(<PokemonList />);
     expect(baseElement).toBeTruthy();
   });
 });

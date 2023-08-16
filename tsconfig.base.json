@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ng-mf/data-store": ["libs/data-store/src/index.ts"],
-      "@ng-mf/ng-shared": ["libs/ng-shared/src/index.ts"]
+      "@ng-mf/ng-shared": ["libs/ng-shared/src/index.ts"],
+      "@ng-mf/store": ["libs/store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
