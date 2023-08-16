@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { Observable } from 'rxjs';
 
-export function useObservableState<T>(source: Observable<T>) {
-  const [state, setState] = React.useState<T>();
+export function useObservableState<T>(source: Observable<T>, defaultValue: T) {
+  const [state, setState] = React.useState<T>(defaultValue);
   useEffect(() => {
     const subscription = source.subscribe({
       next: (value) => {
-        console.log(value);
         setState(value);
       },
     });

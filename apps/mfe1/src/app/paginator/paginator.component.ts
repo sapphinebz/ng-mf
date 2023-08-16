@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
-import { dispatchPaginatorState } from '@ng-mf/store';
+import { dispatch } from '@ng-mf/store';
 @Component({
   selector: 'ng-mf-paginator',
   standalone: true,
@@ -14,15 +14,19 @@ export class PaginatorComponent implements OnInit {
   document = inject(DOCUMENT);
 
   ngOnInit(): void {
-    dispatchPaginatorState({
-      page: 0,
-      first: 0,
-      rows: this.rows,
-      pageCount: 12,
+    dispatch({
+      paginatorState: {
+        page: 0,
+        first: 0,
+        rows: this.rows,
+        pageCount: 12,
+      },
     });
   }
 
   onPageChange(event: PaginatorState) {
-    dispatchPaginatorState(event);
+    dispatch({
+      paginatorState: event,
+    });
   }
 }
